@@ -9,6 +9,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'POST') {
     const { email, audience, acsUrl, id, relayState } = req.body;
 
+    console.log(email, audience, acsUrl, id, relayState)
+
     if (!email.endsWith('@example.com') && !email.endsWith('@example.org')) {
       res.status(403).send(`${email} denied access`);
     }

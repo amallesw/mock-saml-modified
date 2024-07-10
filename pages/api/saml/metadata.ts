@@ -21,6 +21,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   async function MetadataUrl() {
     const { download } = req.query as { download: any };
 
+    console.log("NAMESPACE", req.query.namespace)
+
     const filename = 'mock-saml-metadata' + (req.query.namespace ? `-${req.query.namespace}` : '') + '.xml';
 
     const xml = saml.createIdPMetadataXML({

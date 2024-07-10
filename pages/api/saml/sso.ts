@@ -29,8 +29,10 @@ async function processSAMLRequest(req: NextApiRequest, res: NextApiResponse, isP
   }
 
   try {
+    console.log('SAMLRequest:', samlRequest)
     const rawRequest = await saml.decodeBase64(samlRequest, isDeflated);
-
+    console.log('rawRequest:', rawRequest)
+    
     const { id, audience, acsUrl, providerName, publicKey } = await saml.parseSAMLRequest(rawRequest, isPost);
 
     if (isPost) {
